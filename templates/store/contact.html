@@ -1,0 +1,23 @@
+{% extends 'store/base.html' %}
+{% block content %}
+    {% load static %}
+    <img id="contact-bg-img" class="img-fluid" src="{% static '/store/images/3coffees_pouring.jpg'%}">
+
+    <!-- Contact/Area Container -->
+  <div class="container justify-content-center" id="where" style="padding-bottom:32px;">
+    <div id="contact-form" class="container justify-content-center">
+      <h5>WHERE TO FIND US</h5>
+      <p>Find us at some address at some place.</p>
+      <img src="/w3images/map.jpg" class="w3-image" style="width:100%">
+      <p><span class="w3-tag">FYI!</span> We offer full-service catering for any event, large or small. We understand your needs and we will cater the food to satisfy the biggerst criteria of them all, both look and taste.</p>
+      <p><strong>Reserve</strong> a table, ask for today's special or just send us a message:</p>
+      <form action="/action_page.php" target="_blank">
+        <p><input class="" type="text" placeholder="Name" required name="Name"></p>
+        <p><input class="" type="number" placeholder="How many people" required name="People"></p>
+        <p><input class="" type="datetime-local" placeholder="Date and time" required name="date" value="2020-11-16T20:00"></p>
+        <p><input class="" type="text" placeholder="Message \ Special requirements" required name="Message"></p>
+        <p><button class="" type="submit">SEND MESSAGE</button></p>
+      </form>
+    </div>
+  </div>
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends 'store/base.html' %}
+{% block content %}
+    {% load static %}
+    <img class="bg-img img-fluid" src="{% static '/store/images/ground_beans.jpg'%}">
+      <div class="container justify-content-center">
+            <!-- product cards 1 -->
+          {% for product in products %}
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
+                <div class="card-body">
+                  <a class="text-dark text-decoration-none" href="">{{ product.title }}</a>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                </div>
+            </div>
+          {% endfor %}
+        </div>
+{% endblock content %}
