@@ -5,6 +5,8 @@ from django.urls import reverse
 
 from store.models import Category, Product, Supplier
 from store.views import products_all
+from importlib import import_module
+from django.conf import settings
 
 
 class TestViewResponses(TestCase):
@@ -42,14 +44,8 @@ class TestViewResponses(TestCase):
 
     def test_homepage_html(self):
         request = HttpRequest()
-        response = products_all(request)
-        html = response.content.decode('utf-8')
-        self.assertIn('<title>BAARD &amp; CO</title>', html)
-        self.assertTrue(html.startswith('<!doctype html>\n<html lang="en">\n'))
-        self.assertEqual(response.status_code, 200)
-
-    def test_viewfunction(self):
-        request = self.factory.get('shop/single-origin-coffee')
+        engine = import_module(settings.SESSION_ENGINE)
+        request.session = engine.SessionStore()
         response = products_all(request)
         html = response.content.decode('utf-8')
         self.assertIn('<title>BAARD &amp; CO</title>', html)
