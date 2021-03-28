@@ -1,18 +1,38 @@
-{% extends 'store/base.html' %}
+{% extends "./base.html" %}
+{% load static %}
 {% block content %}
-    {% load static %}
-    <img class="bg-img img-fluid" src="{% static '/store/images/ground_beans.jpg'%}">
-      <div class="container justify-content-center">
-            <!-- product cards 1 -->
-          {% for product in products %}
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
-                <div class="card-body">
-                  <a class="text-dark text-decoration-none" href="">{{ product.title }}</a>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <img id="contact-bg-img" class="img-fluid" src="{% static 'images/ground_beans.jpg'%}">
 
-                </div>
+<main>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="pb-3 h5">Our Range</div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+
+        {% for product in products %}
+
+        <div class="col">
+          <div class="card shadow-sm">
+            <img class="img-fluid" alt="Responsive image" src="{{ product.image.url }}">
+            <div class="card-body">
+              <p class="card-text">
+                <a class="text-dark text-decoration-none" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+              </div>
             </div>
-          {% endfor %}
+          </div>
         </div>
-{% endblock content %}
+
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+
+
+</main>
+
+{% endblock %}
