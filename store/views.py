@@ -5,7 +5,7 @@ from .models import Category, Product
 
 def products_all(request):
     products = Product.products.all()
-    return render(request, 'store/home.html', {'products': products})
+    return render(request, 'store/shop.html', {'products': products})
 
 
 def category_list(request, category_slug=None):
@@ -17,3 +17,18 @@ def category_list(request, category_slug=None):
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug, in_stock=True)
     return render(request, 'store/products/detailed_product.html', {'product': product})
+
+
+def about(request):
+    context = {}
+    return render(request, 'store/about.html', context)
+
+
+def contact(request):
+    context = {}
+    return render(request, 'store/contact.html', context)
+
+
+def landing(request):
+    context = {}
+    return render(request, 'store/home.html', context)
